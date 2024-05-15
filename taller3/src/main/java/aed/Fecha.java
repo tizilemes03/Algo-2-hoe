@@ -1,52 +1,62 @@
 package aed;
 
 public class Fecha {
-    private int _dia;
-    private int _mes;
+    private int _day;
+    private int _month;
+
+
     public Fecha(int dia, int mes) {
-        
-        _dia= dia;
-        _mes= mes;    
-        //los constructores son utilizados para construir clases, esta clase inicializa la 
-        //primer instancia de la clase
+        _day=dia;
+        _month=mes;
         //throw new UnsupportedOperationException("No implementada aun");
     }
 
     public Fecha(Fecha fecha) {
-        //tratar de entender que es esto_dia= fecha._dia;
+        _day= fecha.dia();
+        _month= fecha.mes();
         //throw new UnsupportedOperationException("No implementada aun");
     }
 
     public Integer dia() {
-        return _dia;
+        return _day;
         //throw new UnsupportedOperationException("No implementada aun");
     }
 
     public Integer mes() {
+        return _month;
         //throw new UnsupportedOperationException("No implementada aun");
-        return _mes;
     }
 
     public String toString() {
+        return (String.valueOf(_day) +"/"+ String.valueOf(_month));
         //throw new UnsupportedOperationException("No implementada aun");
-        return  String.valueOf(_dia) + "/" + String.valueOf(_mes);
     }
 
     @Override
     public boolean equals(Object otra) {
-        throw new UnsupportedOperationException("No implementada aun");
+        
+        return (this.toString().equals( otra.toString() ) && (otra.getClass() == this.getClass()));
+        //return (_day==( otra ) && (_month== otra ) );
+        //throw new UnsupportedOperationException("No implementada aun");
     }
 
     public void incrementarDia() {
-        //throw new UnsupportedOperationException("No implementada aun");
-        _dia+=1;
-        if (_dia > diasEnMes(_mes) ){
-            _dia = _dia - diasEnMes(_mes);
-            _mes = (_mes + 1)%12; // me sirve para el caso 1/13
+        if( (_day+1)> diasEnMes(_month)){
+            _day= 1;
+            if(_month==12){
+                _month=1;
+            }
+            else{
+                _month++;
+            }
+        }
+
+        else {
+            _day++;
         }
         
+        //throw new UnsupportedOperationException("No implementada aun");
     }
-
 
     private int diasEnMes(int mes) {
         int dias[] = {
