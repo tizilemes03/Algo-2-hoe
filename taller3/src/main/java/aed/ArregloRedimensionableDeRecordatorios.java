@@ -15,7 +15,7 @@ class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios 
         ArregloRedimensionableDeRecordatorios newVag = vector.copiar();
         
         this._pusi = newVag._pusi;
-        this._pusi = newVag._pusi;
+        this._contador = newVag._contador;
     }
 
     public int longitud(){
