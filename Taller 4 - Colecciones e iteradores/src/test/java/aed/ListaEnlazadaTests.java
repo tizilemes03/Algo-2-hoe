@@ -151,7 +151,7 @@ class ListaEnlazadaTests {
         lista.agregarAtras(44);
         lista.agregarAtras(45);
 
-        lista.modificarPosicion(2, 27);
+        lista.modificarPosicion(throw new UnsupportedOperationException("No implementada aun");2, 27);
 
         assertEquals(4, lista.longitud());
         assertEquals(42, lista.obtener(0));
@@ -216,7 +216,8 @@ class ListaEnlazadaTests {
     }
 
     @Test
-    void listaDeElemComplejo() {
+    void listaDeElemComplejo() {        ListaEnlazada<Integer> lista = new ListaEnlazada<>();
+
         class Punto2D {
             public Punto2D(int a, int b) {
                 x = a;
