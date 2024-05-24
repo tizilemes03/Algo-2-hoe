@@ -40,10 +40,6 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         Nodo nuevito = new Nodo();
         if (contador == 0){
             nuevito.valor= elem;
-            nuevito.ant= null;
-            nuevito.sig= null;
-
-
             first = nuevito;
             last = nuevito;
         }
@@ -71,6 +67,7 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
         else{
             newito.valor= elem;
+            this.last.sig = newito;
             newito.sig= null;
             newito.ant= last;
 
@@ -98,21 +95,58 @@ public class ListaEnlazada<T> implements Secuencia<T> {
             este = este.sig;
             j++;
         }
-        //este.ant  
+        
+        if (contador == 1){
+            last= null;
+            first= null;
+        }    
+        
+        else{
+            
+            if( (este != this.last) && (este != this.first)){
+                (este.sig).ant = este.ant;
+                (este.ant).sig = este.sig; 
+                este.sig= null;
+                este.ant= null;
+            }
+            if (este == last){
+                last = este.ant;
+
+                este.ant.sig=null;
+                este.ant=null;
+            }    
+            if (este == first){
+                first= este.sig;
+
+                este.sig.ant = null;
+                este.sig = null;
+            }
+    
+
+        }
+
+        contador = contador - 1;
     
     }
 
 
     public void modificarPosicion(int indice, T elem) {
-        //throw new UnsupportedOperationException("No implementada aun");
+        Nodo este = this.first;
+        int j = 0;
+        while (j != indice){
+            este = este.sig;
+            j++;
+        }
+        este.valor = elem;
+
     }
 
     public ListaEnlazada<T> copiar() {
-        //throw new UnsupportedOperationException("No implementada aun");
+        
     }
 
     public ListaEnlazada(ListaEnlazada<T> lista) {
-        //throw new UnsupportedOperationException("No implementada aun");
+        
     }
     
     @Override
